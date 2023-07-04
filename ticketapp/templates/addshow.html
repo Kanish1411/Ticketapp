@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Add Show to {{ venue.name }}</h1>
+  <form method="POST">
+      <label for="name">Name</label>
+      <input type="text" class="form-control"name="name" id="name">
+      <label for="date">Date</label>
+      <input type="date" name="date" class="form-control" >
+      <label for="time">Time</label>
+      <input type="time" name="time" class="form-control" >
+      <label for="description">Tags (seperate by commas)</label>
+      <textarea name="description" class="form-control"></textarea>
+      <label for="price">Price</label>
+      <input type="number" name="price" class="form-control">
+      <label for="rating">Imdb rating</label>
+      <input type="text" name="rating" class="form-control">
+      <label for="numb">Capacity</label>
+      <input type="number" name="numb" class="form-control">
+      <button type="submit" class="btn btn-primary">Add Show</button>
+  </form>
+  <br>
+{% endblock %}

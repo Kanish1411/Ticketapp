@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Update Venue</h1>
+  <form method="POST">
+    <label for="name">Name</label>
+    <input type="text" class="form-control"name="name" id="name">
+    <label for="addr">City</label>
+    <input type="text" class="form-control" name="addr" id="addr">
+     <button type="submit"  class="btn btn-primary">Update Venue</button>
+</form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block navbar %}
+<a class="nav-item nav-link" href="/user/dashboard">Dashboard</a>
+<a class="nav-item nav-link" href="/logout">Logout</a>
+{% endblock %}
+{% block content %}
+
+<h4> Venue details:</h4>
+<h4>{{venue.name}}</h4>
+<h5>{{venue.address}}</h5>
+<h5>{{venue.city}} </h5>
+
+{%if show%}
+<h5>Shows currently screened in {{venue.name}}</h5>
+<br>
+  {% for s in show%}
+    {% if s.venue_id==venue.id%}
+    <h5><div>{{"Show name: "}}{{ s.name}}{{"   Show rating : "}}{{s.rating}}{{"   Show timing: "}}{{ s.time}}{{"   Available seats:"}}{{ s.capacity }}</div></h5>
+        <form action="{{ url_for('auth.book', show_id=s.id) }}">
+          <button type="submit" class="btn btn-primary">Book</button>
+        </form>  
+    {%endif%}
+{%endfor%}
+{%else%}
+<h5>No Shows currently Screened in {{venue.name}}</h5>
+{%endif%}    
+{%endblock%}

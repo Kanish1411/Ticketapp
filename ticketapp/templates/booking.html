@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block navbar %}
+<a class="nav-item nav-link" href="/user/dashboard">Dashboard</a>
+{% endblock %}
+{% block content %}
+    <h1>Booking Ticket</h1>
+    <form method="POST" action="/booking/{{show_id}}">
+      <label for="number">Number of Tickets:</label>
+      <input type="number" id="number" name="number" value="0"><br>
+      <Button type="submit"class="btn btn-primary">Check Availability</Button><br>
+      {%if house == 1%}
+      <p>Unavailable!</p>
+      {%else%}
+      {% if total %}
+        <p>Total Cost: {{ total }}</p>
+        <p> Available re-enter the number of seats to book</p>
+        <p>Confirm Booking?</p>
+        <input type="hidden" name="total" value="{{ total }}">
+        <Button type="submit" name="confirm"class="btn btn-primary">Confirm</Button>
+      {% endif %}
+      {%endif%}
+    </form>
+{%endblock%}
