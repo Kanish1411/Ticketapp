@@ -66,7 +66,7 @@ def usersignup():
             elif pw != pw1:
                 flash('Passwords don\'t match', category='error')
             else:
-                new_usr=User(email=em,password=generate_password_hash(pw,method='sha256'),name=user)
+                new_usr=User(email=em,password=generate_password_hash(pw),name=user)
                 db.session.add(new_usr)
                 db.session.commit()
                 flash('Account created!', category='success')
@@ -93,7 +93,7 @@ def adminsignup():
             elif pw != pw1:
                 flash('Passwords don\'t match', category='error')
             else:
-                new_ad=User(email=em,password=generate_password_hash(pw,method='sha256'),name=user,isadmin=True)
+                new_ad=User(email=em,password=generate_password_hash(pw),name=user,isadmin=True)
                 db.session.add(new_ad)
                 db.session.commit()
                 flash('Account created!', category='success')

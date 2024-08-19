@@ -1,6 +1,6 @@
-FROM python:3-alpine3.11
+FROM python:3-slim
 WORKDIR /app
 COPY . /app
 RUN pip install -r req.txt
-EXPOSE 5000
-CMD python ./main.py
+EXPOSE 3000
+CMD ["python", "./main.py"]

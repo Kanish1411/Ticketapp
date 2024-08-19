@@ -24,12 +24,12 @@ def create_app():
     def load_user(id):
         user = User.query.filter_by(id=id).first()
         return user
-    
-    create_db(app)
-    
+    with app.app_context():
+        create_db()
+
     return app
 
-def create_db(app):
-    if not path.exists('website/'+DB_NAME):
-        db.create_all(app=app)
+def create_db():
+    if not path.exists('website/' + DB_NAME):
+        db.create_all()
         print("Created Database")
